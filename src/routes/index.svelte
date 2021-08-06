@@ -115,6 +115,19 @@
         setDemoPreset(20);
       }
     });
+
+    document.addEventListener('click', () => {
+      if (intervalReference) {
+        pauseTimer();
+      } else {
+        startTimer();
+      }
+    });
+
+    // document.addEventListener('touchstart', () => {
+      
+    // }, false);        
+    // document.addEventListener('touchmove', handleTouchMove, false);
   });
 
   $: totalTime = (initialMinutes * 60) + initialSeconds
