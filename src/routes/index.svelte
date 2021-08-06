@@ -90,6 +90,10 @@
     timeEnded = false;
   };
 
+  // for swipes
+  let xDown = null;
+  let yDown = null;
+
   onMount(async () => {
     document.addEventListener('keyup', (event) => {
       const { key } = event;
@@ -117,6 +121,7 @@
     });
 
     document.addEventListener('click', () => {
+      console.log('click!')
       if (intervalReference) {
         pauseTimer();
       } else {
@@ -124,10 +129,56 @@
       }
     });
 
-    // document.addEventListener('touchstart', () => {
-      
-    // }, false);        
-    // document.addEventListener('touchmove', handleTouchMove, false);
+    document.addEventListener('dbclick', () => {
+      console.log('dbclick!')
+      if (intervalReference) {
+        resetTimer();
+      } else {
+        startTimer();
+      }
+    });
+    
+    document.addEventListener('touchstart', (e) => {
+      console.log('touch start!')
+      const firstTouch = e.touches[0];
+      console.log('first touch X ', firstTouch.clientX, ' former X ', xDown)
+      console.log('first touch Y ', firstTouch.clientY, ' former Y ', yDown)
+      xDown = firstTouch.clientX;
+      yDown = firstTouch.clientY;
+    }, false);
+    document.addEventListener('touchmove', (evt) => {
+      console.log('touch move!');
+      if ( ! xDown || ! yDown ) {
+        return;
+      }
+
+      var xUp = evt.touches[0].clientX;
+      var yUp = evt.touches[0].clientY;
+
+      var xDiff = xDown - xUp;
+      var yDiff = yDown - yUp;
+
+      if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
+          if ( xDiff > 0 ) {
+              /* right swipe */
+              toggleEdit('seconds');
+          } else {
+              /* left swipe */
+              toggleEdit('minutes');
+          }
+      } else {
+          if ( yDiff > 0 ) {
+              /* down swipe */
+              editing === 'minutes' ? updateMinutes(false) : updateSeconds(false);
+          } else { 
+              /* up swipe */
+              editing === 'minutes' ? updateMinutes(true) : updateSeconds(true);
+          }
+      }
+      /* reset values */
+      xDown = null;
+      yDown = null;  
+    }, false);
   });
 
   $: totalTime = (initialMinutes * 60) + initialSeconds
