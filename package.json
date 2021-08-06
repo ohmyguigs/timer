@@ -1,8 +1,8 @@
 {
-  "name": "bem-vinde",
-  "version": "0.0.0",
+  "name": "timer",
+  "version": "0.0.1",
   "description": "A POC with Svelte Kit",
-  "repository": "https://github.com/ohmyguigs/bem-vinde",
+  "repository": "https://github.com/ohmyguigs/timer",
   "author": "ohmyguigs",
   "license": "MIT",
   "scripts": {
