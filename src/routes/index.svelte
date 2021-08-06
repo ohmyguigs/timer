@@ -269,6 +269,7 @@
     display: flex;
     position: relative;
     overflow: hidden;
+    overscroll-behavior: none;
     height: 100vh;
     width: 100%;
     text-align: center;
