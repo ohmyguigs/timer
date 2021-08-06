@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.png" />
+		<link href="https://fonts.googleapis.com/css?family=B612+Mono" rel="stylesheet" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>timer</title>
+
+		
+
+		<link rel="modulepreload" href="/timer/_app/start-9988a733.js">
+		<link rel="modulepreload" href="/timer/_app/chunks/vendor-30fa7531.js">
+		<link rel="modulepreload" href="/timer/_app/layout.svelte-cc0beee7.js">
+		<link rel="modulepreload" href="/timer/_app/pages/index.svelte-043ad587.js">
+		<link rel="stylesheet" href="/timer/_app/assets/start-a8cd1609.css">
+		<link rel="stylesheet" href="/timer/_app/assets/pages/index.svelte-7bf7a04f.css">
+
+		<script type="module">
+			import { start } from "/timer/_app/start-9988a733.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"/timer","assets":"/timer"},
+				session: {},
+				host: location.host,
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/timer/_app/layout.svelte-cc0beee7.js"),
+						import("/timer/_app/pages/index.svelte-043ad587.js")
+					],
+					page: {
+						host: location.host, // TODO this is redundant
+						path: "/",
+						query: new URLSearchParams(""),
+						params: {}
+					}
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+
+
+
+
+
+<div class="index__container svelte-11qhmyo"><div class="css-zg9f03 svelte-11qhmyo"></div>
+  <div class="index__subcontainer svelte-11qhmyo"><div class="index__frontpanel svelte-11qhmyo"><span class="css-ow1ycy svelte-11qhmyo"><span class="css-1q39trt svelte-11qhmyo">10</span>
+        <span class="index__text_separator svelte-11qhmyo">:</span>
+        <span class="css-1plcsxz svelte-11qhmyo">00</span></span></div></div>
+</div>
+
+
+
+	
+</div>
+	</body>
+</html>
