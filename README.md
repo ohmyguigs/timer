@@ -1,9 +1,23 @@
 # This is a timer
   no mistery, just to test some things with svelte...
 
-### Commands cheatsheet
+# Commandos
+### Comandos principais
+------------------timer commands------------------
 
----------------Numbers on keyboard---------------
+Setas para o lado ou Swipe lateral:
+ - muda a edição entre minuto e segundo.
+
+Setas para cima/baixo ou Swipe vertical:
+ - aumenta/diminui o número.
+
+Barra de espaço ou Enter:
+ - começa a contar ou pausa.
+
+R - reseta para o último valor.
+
+### Atalhos
+---------------numeros no teclado---------------
 
  1 - set 5 min
 
@@ -12,18 +26,6 @@
  3 - set 15 min
 
  4- é 20 min :herb:
-
-------------------timer commands------------------
-
-Arrows - Increase/Decrease time and change selection from seconds to minutes
-
-Space / Enter - Start count!
-
-R - reset to last set value
-
-H - help
-
-Bezão (B maiúsculo, a.k.a shift+b) - alerta na tela quantos segundos acumulados negativos na seção (a seção limpa com refresh)
 
 # this was made with svelte-kit
 # create-svelte
