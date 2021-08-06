@@ -1,6 +1,5 @@
 import preprocess from 'svelte-preprocess';
-// import adapter from '@sveltejs/adapter-static';
-import node from '@sveltejs/adapter-node';
+import adapter from '@sveltejs/adapter-static'
 // const node = require('@sveltejs/adapter-node');
 // const pkg = require('./package.json');
 
@@ -14,15 +13,15 @@ const config = {
 		// By default, `npm run build` will create a standard Node app.
 		// You can create optimized builds for different platforms by
 		// specifying a different adapter
-		adapter: node(),
-		// adapter: adapter(),
+		//adapter: node(),
+		adapter: adapter(),
 
 		// Comment the paths if wants to run in dev mode.
 		paths: {
-			// base: process.env.NODE_ENV == 'production' ? '/bem-vinde' : '',
-			// assets: process.env.NODE_ENV == 'production' ? '/bem-vinde' : '',
-			base: '',
-			assets: '',
+			base: '/timer',
+			assets: '/timer',
+			// base: '',
+			// assets: '',
 		},
 
 		// hydrate the <div id="svelte"> element in src/app.html
