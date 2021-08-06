@@ -129,8 +129,8 @@
       }
     });
 
-    document.addEventListener('dbclick', () => {
-      console.log('dbclick!')
+    document.addEventListener('dblclick', () => {
+      console.log('dblclick!')
       if (intervalReference) {
         resetTimer();
       } else {
