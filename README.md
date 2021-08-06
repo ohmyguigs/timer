@@ -14,7 +14,8 @@ Setas para cima/baixo ou Swipe vertical:
 Barra de espaço ou Enter:
  - começa a contar ou pausa.
 
-R - reseta para o último valor.
+tecla R ou duplo-click
+ - reseta para o último valor.
 
 ### Atalhos
 ---------------numeros no teclado---------------
