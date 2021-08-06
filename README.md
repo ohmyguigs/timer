@@ -20,13 +20,13 @@ tecla R ou duplo-click
 ### Atalhos
 ---------------numeros no teclado---------------
 
- 1 - set 5 min
+ 1 - muda o tempo para 5 min
 
- 2 - set 10 min
+ 2 - é 10 min
 
- 3 - set 15 min
+ 3 - é 15 min
 
- 4- é 20 min :herb:
+ 4 - é 20 min :herb:
 
 # this was made with svelte-kit
 # create-svelte
