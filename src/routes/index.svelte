@@ -121,7 +121,6 @@
     });
 
     document.addEventListener('click', () => {
-      console.log('click!')
       if (intervalReference) {
         pauseTimer();
       } else {
@@ -129,25 +128,21 @@
       }
     });
 
-    document.addEventListener('dblclick', () => {
-      console.log('dblclick!')
-      if (intervalReference) {
-        resetTimer();
-      } else {
-        startTimer();
-      }
-    });
+    // document.addEventListener('dblclick', () => {
+    //   console.log('dblclick!')
+    //   if (intervalReference) {
+    //     resetTimer();
+    //   } else {
+    //     startTimer();
+    //   }
+    // });
     
     document.addEventListener('touchstart', (e) => {
-      console.log('touch start!')
       const firstTouch = e.touches[0];
-      console.log('first touch X ', firstTouch.clientX, ' former X ', xDown)
-      console.log('first touch Y ', firstTouch.clientY, ' former Y ', yDown)
       xDown = firstTouch.clientX;
       yDown = firstTouch.clientY;
     }, false);
     document.addEventListener('touchmove', (evt) => {
-      console.log('touch move!');
       if ( ! xDown || ! yDown ) {
         return;
       }
@@ -263,14 +258,14 @@
     margin: 0;
     padding: 0;
     font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overscroll-behavior: none;
   }
 
   .index__container {
     display: flex;
     position: relative;
     overflow: hidden;
-    overscroll-behavior: none;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     text-align: center;
     background-color: #37056b;
@@ -278,7 +273,7 @@
 
   .index__subcontainer {
     position: absolute;
-    height: 100vh;
+    height: 100%;
     width: 100%;
   }
 
