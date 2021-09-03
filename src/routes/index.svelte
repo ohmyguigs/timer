@@ -238,7 +238,8 @@
 </script>
 
 <svelte:head>
-	<title>timer</title>
+  <title>timer</title>
+  <meta name="description" content="Este é um contador de minutos visual usado para ajudar em reuniões.">
 </svelte:head>
 
 <div class="index__container">
