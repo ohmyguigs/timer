@@ -33,6 +33,12 @@
             seconds = shouldTimeEnded ? 0 : 59;
             minutes = shouldTimeEnded ? 0 : minutes - 1;
             timeEnded = shouldTimeEnded;
+            if (shouldTimeEnded) {
+              toast.push({
+                ...toastDefaultOptions,
+                msg: 'Acaou o tempo, mas fica! Vai ter bolo! 🍰',
+              })
+            }
           } else {
             seconds = seconds - 1;
           }
@@ -131,7 +137,7 @@
       else if (key === 'b') {
         toast.push({
           ...toastDefaultOptions,
-          msg: 'Vai ter bolo! 🍰',
+          msg: 'Fica! Vai ter bolo! 🍰',
         })
       }
     });
