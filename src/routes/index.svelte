@@ -1,6 +1,7 @@
 <!-- src/routes/index.svelte -->
 <script>
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
+  import { SvelteToast, toast } from '@zerodevx/svelte-toast';
   import { css } from '@emotion/css';
   export const ssr = false;
 
@@ -93,6 +94,15 @@
   // for swipes
   let xDown = null;
   let yDown = null;
+  // for animations
+  const TEXT_COLOR = '#ffffff';
+  const OLX_VERDO = '#8ce563';
+  const OLX_LARANJO = '#f28000';
+  const BACKPANEL_COLOR = Math.random() < 0.5 ? OLX_LARANJO : OLX_VERDO;
+  const UNSELECTED_TEXT_COLOR = '#999999';
+  const BLINK_COLOR = '#e22828';
+  // for toasts
+  const toastDefaultOptions = { duration: 4200, reversed: true, intro: { y: 42 } }
 
   onMount(async () => {
     document.addEventListener('keyup', (event) => {
@@ -117,6 +127,12 @@
         setDemoPreset(15);
       } else if (key === '4') {
         setDemoPreset(20);
+      }
+      else if (key === 'b') {
+        toast.push({
+          ...toastDefaultOptions,
+          msg: 'Vai ter bolo! 🍰',
+        })
       }
     });
 
@@ -179,20 +195,34 @@
       xDown = null;
       yDown = null;  
     }, false);
+
+    // UX toast
+    const firsToastTime = 420 // ms
+    setTimeout(() => {
+      toast.push({
+        ...toastDefaultOptions,
+        msg: 'Para começar ou pausar<br/> Use "Enter", "Barra de espaço" ou "clique/toque"',
+      })
+    }, firsToastTime);
+    setTimeout(() => {
+      toast.push({
+        ...toastDefaultOptions,
+        duration: 5500,
+        msg: 'Para editar, <strong>primeiro pause</strong>,<br/>então use as setas no teclado, swipe no celular<br/>ou no teclado os atalhos 1, 2, 3 ou 4',
+      })
+    }, firsToastTime + toastDefaultOptions.duration);
   });
+
+  onDestroy(() => toast.pop(0));
 
   $: totalTime = (initialMinutes * 60) + initialSeconds
   $: remainingTime = (minutes * 60) + seconds
   $: isRunning = !!intervalReference
 
   // wtf is this? there is style in my js...
-  // sorry
-  const TEXT_COLOR = '#ffffff';
-  const OLX_VERDO = '#8ce563';
-  const OLX_LARANJO = '#f28000';
-  const BACKPANEL_COLOR = Math.random() < 0.5 ? OLX_LARANJO : OLX_VERDO;
-  const UNSELECTED_TEXT_COLOR = '#999999';
-  const BLINK_COLOR = '#e22828';
+  // sorry, but it's for the sake of animations
+
+  // animações do fundo do contador
   $: index__backpanel = css`
     display: flex;
     position: absolute;
@@ -257,6 +287,9 @@
       </span>
     </div>
   </div>
+  <div class="toast__wrapper" on:click|stopPropagation>
+    <SvelteToast />
+  </div>
 </div>
 
 <style>
@@ -264,6 +297,14 @@
     margin: 0;
     padding: 0;
     font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .toast__wrapper {
+    --toastWidth: 420px;
+    --toastContainerTop: auto;
+    --toastContainerLeft: 42px;
+    --toastContainerBottom: 42px;
+    max-width: 400px;
   }
 
   .index__container {
