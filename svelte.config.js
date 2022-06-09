@@ -1,6 +1,6 @@
 import preprocess from 'svelte-preprocess';
 import adapter from '@sveltejs/adapter-static'
-// const node = require('@sveltejs/adapter-node');
+// import node from '@sveltejs/adapter-node'
 // const pkg = require('./package.json');
 
 // /** @type {import('@sveltejs/kit').Config} */
@@ -13,7 +13,7 @@ const config = {
 		// By default, `npm run build` will create a standard Node app.
 		// You can create optimized builds for different platforms by
 		// specifying a different adapter
-		//adapter: node(),
+		// adapter: node(),
 		adapter: adapter(),
 
 		// Comment the paths if wants to run in dev mode.

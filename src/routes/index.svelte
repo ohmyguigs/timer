@@ -133,12 +133,47 @@
         setDemoPreset(15);
       } else if (key === '4') {
         setDemoPreset(20);
-      }
-      else if (key === 'b') {
+      } else if (key === 'b') {
         toast.push({
           ...toastDefaultOptions,
           msg: 'Fica! Vai ter bolo! 🍰',
         })
+      } else if (key === 's') {
+        navigator.mediaDevices.getDisplayMedia({
+          audio: false,
+          video: {
+            width: 300,
+            height: 150,
+          },
+        })
+        .then(stream => {
+          console.log('started stream! 🎉')
+          // pipStream = stream;
+          const pipStreamer = document.getElementById('pip-streamer')
+          pipStreamer.srcObject = stream;
+          // DUMP
+          // const videoTrack = pipStreamer.srcObject.getVideoTracks()[0];
+          // console.info("Track settings:");
+          // console.info(JSON.stringify(videoTrack.getSettings(), null, 2));
+          // console.info("Track constraints:");
+          // console.info(JSON.stringify(videoTrack.getConstraints(), null, 2));
+        })
+        .catch(err => {
+          console.log('Error in pip stream: ', err)
+          toast.push({
+            ...toastDefaultOptions,
+            msg: 'Erro entrando no PIP',
+          })
+        });
+      } else if (key === 'p') {
+        if (document.pictureInPictureElement) {
+            document.exitPictureInPicture();
+        } else {
+          if (document.pictureInPictureEnabled) {
+            const pipStreamer = document.getElementById('pip-streamer')
+            pipStreamer.requestPictureInPicture();
+          }
+        }
       }
     });
 
@@ -296,6 +331,9 @@
   <div class="toast__wrapper" on:click|stopPropagation>
     <SvelteToast />
   </div>
+  <div class="pip__wrapper" on:click|stopPropagation>
+    <video id="pip-streamer" autoplay></video>
+  </div>
 </div>
 
 <style>
@@ -303,6 +341,16 @@
     margin: 0;
     padding: 0;
     font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .pip__wrapper {
+    position: fixed;
+    bottom: 42px;
+    right: 42px;
+    width: 300px;
+    height: 150px;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
   .toast__wrapper {
